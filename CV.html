@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Олтиев Нурмухаммад - Senior 1C Developer & System Administrator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #10b981;
+            --dark: #1f2937;
+            --light: #f9fafb;
+            --gray: #6b7280;
+            --accent: #f59e0b;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 80px 0 120px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.07)"/></svg>');
+            background-size: 100% 100%;
+        }
+
+        .nav-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .nav-container.scrolled {
+            padding: 5px 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+
+        /* Hero Section */
+        .hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards 0.5s;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--primary);
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .hero-content .title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .tags {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 8px 15px;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Experience */
+        .exp-item {
+            margin-bottom: 30px;
+            position: relative;
+            padding-left: 30px;
+            border-left: 3px solid var(--primary);
+        }
+
+        .exp-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .exp-item::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .company {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .period {
+            background: var(--secondary);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .job-title {
+            font-style: italic;
+            margin-bottom: 15px;
+            color: var(--gray);
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-category {
+            margin-bottom: 20px;
+        }
+
+        .skill-category h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-category h3 i {
+            color: var(--secondary);
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background: var(--light);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 8px;
+            transition: var(--transition);
+            border: 1px solid #e5e7eb;
+            cursor: default;
+        }
+
+        .skill-tag:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Languages */
+        .languages-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .language-item {
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .language-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .language-name {
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .language-level {
+            color: var(--secondary);
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            width: 100%;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-content .title {
+                font-size: 1.2rem;
+            }
+            
+            .exp-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .profile-img {
+                width: 150px;
+                height: 150px;
+                font-size: 3rem;
+            }
+        }
+
+        /* Theme switch */
+        .theme-switch {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        .theme-switch:hover {
+            transform: rotate(30deg);
+        }
+
+        /* Print styles */
+        @media print {
+            .nav-container, .theme-switch, .scroll-down {
+                display: none !important;
+            }
+            
+            header {
+                padding: 40px 0;
+            }
+            
+            section {
+                padding: 40px 0;
+            }
+            
+            .card {
+                box-shadow: none;
+                border: 1px solid #eee;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-container">
+        <nav class="container">
+            <div class="logo">Н.Олтиев</div>
+            <div class="nav-links">
+                <a href="#about">Обо мне</a>
+                <a href="#experience">Опыт</a>
+                <a href="#skills">Навыки</a>
+                <a href="#education">Образование</a>
+                <a href="#languages">Языки</a>
+                <a href="#contact">Контакты</a>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </div>
+
+    <header>
+        <div class="container">
+            <div class="hero-content">
+                <div class="profile-img">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h1>Олтиев Нурмухаммад Хабибуллоевич</h1>
+                <div class="title">Senior 1C Developer & System Administrator</div>
+                
+                <div class="tags">
+                    <span class="tag">7+ лет опыта</span>
+                    <span class="tag">Администрирование 1С</span>
+                    <span class="tag">Системное администрирование</span>
+                </div>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Москва, Россия</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:+79613360606">+7 (961) 3360606</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:nurmuhammad_9797@bk.ru">nurmuhammad_9797@bk.ru</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-down">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </header>
+
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Обо мне</h2>
+            </div>
+            
+            <div class="card">
+                <div class="about-content">
+                    <p>Я Senior 1C Developer и System Administrator с более чем 7-летним опытом работы. Специализируюсь на администрировании, разработке и оптимизации систем 1С:Предприятие, системном администрировании и интеграции бизнес-процессов.</p>
+                    
+                    <p>Мои ключевые компетенции включают полный цикл сопровождения 1С: от установки и настройки до разработки сложных отчетов и интеграций с внешними системами. Имею глубокие знания в области системного администрирования Windows/Linux серверов, управления базами данных и обеспечения информационной безопасности.</p>
+                    
+                    <p>Я ответственный, проактивный, стрессоустойчивый, коммуникабельный и честный специалист. Мои сильные стороны — хорошие управленческие и лидерские навыки, клиентоориентированность, системное мышление, позитивный настрой.</p>
+                    
+                    <p>Обладаю высокой работоспособностью, умею работать в режиме многозадачности и в команде, имею развитые организационные и управленческие способности. Готов к релокации в Москву и командировкам.</p>
+                    
+                    <div class="tags" style="justify-content: flex-start; margin-top: 20px;">
+                        <span class="tag">Не пью</span>
+                        <span class="tag">Не курю</span>
+                        <span class="tag">Есть права категории B, BE</span>
+                        <span class="tag">Готов к переезду</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="goal">
+        <div class="container">
+            <div class="section-title">
+                <h2>Карьерная цель</h2>
+            </div>
+            
+            <div class="card">
+                <div class="goal-content">
+                    <p><strong>Желаемая должность:</strong> Руководитель IT-направления / Senior 1C Developer / System Architect</p>
+                    <p><strong>Зарплата:</strong> от 250 000 ₽ на руки</p>
+                    <p><strong>Занятость:</strong> полная занятость, частичная занятоция, проектная работа</p>
+                    <p><strong>График работы:</strong> полный день, сменный график, гибкий график, удаленная работа</p>
+                    <p><strong>Готов к переезду:</strong> Москва, Республика Татарстан, Таджикистан</p>
+                    <p><strong>Готов к командировкам:</strong> да</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <div class="section-title">
+                <h2>Опыт работы</h2>
+            </div>
+            
+            <div class="card">
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <span class="company">ООО МКМ, Йошкар-Ола</span>
+                        <span class="period">Май 2020 — настоящее время (5+ лет)</span>
+                    </div>
+                    <div class="job-title">Веб разработчик; Специалист 1с; Системный Администратор</div>
+                    <div class="job-description">
+                        <p>Ключевые обязанности и достижения:</p>
+                        <ul>
+                            <li>Полное администрирование и поддержка 1С:Предприятие 8.3, 8.2 (тонкий и толстый клиент, веб-доступ, сервер 1С)</li>
+                            <li>Администрирование стандартных и нетиповых конфигураций (1С:Бухгалтерия, 1С:ЗУП, 1С:Документооборот, 1С:ERP, 1С:УНФ, 1С:Розница)</li>
+                            <li>Резервное копирование и восстановление баз 1С (выгрузка/загрузка .dt, резервные копии SQL, автоматизация через Veeam, Acronis, scripts PowerShell/Bash)</li>
+                            <li>Оптимизация баз 1С (реиндексация, тестирование и исправление, chdbfl.exe, chktCdb)</li>
+                            <li>Настройка распределённых баз (РИБ), кластеров 1С, балансировка нагрузки</li>
+                            <li>Миграция баз 1С между серверами, переход с файлового режима на SQL (MSSQL, PostgreSQL)</li>
+                            <li>Настройка автоматических обновлений 1С (конфигурации, платформы)</li>
+                            <li>Интеграция 1C с CRM, ERP, СБИС, банк-клиентами, API</li>
+                            <li>Разработка и доработка в 1С: создание справочников, документов, отчетов, обработок</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <span class="company">Сайвер</span>
+                        <span class="period">Февраль 2020 — Апрель 2020 (3 месяца)</span>
+                    </div>
+                    <div class="job-title">Продавец-консультант</div>
+                    <div class="job-description">
+                        <p>Консультирование клиентов по товарам и услугам, работа с кассой, мерчандайзинг, обеспечение выполнения плановых показателей продаж.</p>
+                    </div>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <span class="company">Ростелеком</span>
+                        <span class="period">Сентябрь 2018 — Март 2020 (1 год 7 месяцев)</span>
+                    </div>
+                    <div class="job-title">Менеджер по работе с клиентами</div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Организация и контроль работы менеджеров по продажам и работе с клиентами</li>
+                            <li>Консультирование клиентов по текущему ассортименту товаров и услуг, ценам и специальным предложениям</li>
+                            <li>Разработка и внедрение стандартов обслуживания клиентов</li>
+                            <li>Обучение новых сотрудников и проведение тренингов для команды</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <div class="section-title">
+                <h2>Профессиональные навыки</h2>
+            </div>
+            
+            <div class="skills-grid">
+                <div class="card">
+                    <div class="skill-category">
+                        <h3><i class="fas fa-server"></i> Администрирование 1С</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag">1С:Предприятие 8.3</span>
+                            <span class="skill-tag">1С:Предприятие 8.2</span>
+                            <span class="skill-tag">Тонкий и толстый клиент</span>
+                            <span class="skill-tag">Веб-доступ</span>
+                            <span class="skill-tag">Сервер 1С</span>
+                            <span class="skill-tag">1С:Бухгалтерия</span>
+                            <span class="skill-tag">1С:ЗУП</span>
+                            <span class="skill-tag">1С:Документооборот</span>
+                            <span class="skill-tag">1С:ERP</span>
+                            <span class="skill-tag">1С:УНФ</span>
+                            <span class="skill-tag">1С:Розница</span>
+                            <span class="skill-tag">Резервное копирование</span>
+                            <span class="skill-tag">Оптимизация баз</span>
+                            <span class="skill-tag">Распределённые базы (РИБ)</span>
+                            <span class="skill-tag">Кластеры 1С</span>
+                            <span class="skill-tag">Миграция баз</span>
+                            <span class="skill-tag">Автоматические обновления</span>
+                            <span class="skill-tag">Отладчик</span>
+                            <span class="skill-tag">Журнал регистрации</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="skill-category">
+                        <h3><i class="fas fa-desktop"></i> Системное администрирование</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag">Windows Server 2016/2019/2022</span>
+                            <span class="skill-tag">Linux (Ubuntu, CentOS, Debian)</span>
+                            <span class="skill-tag">Active Directory</span>
+                            <span class="skill-tag">DNS</span>
+                            <span class="skill-tag">DHCP</span>
+                            <span class="skill-tag">GPO</span>
+                            <span class="skill-tag">WSUS</span>
+                            <span class="skill-tag">MS SQL</span>
+                            <span class="skill-tag">PostgreSQL</span>
+                            <span class="skill-tag">MySQL</span>
+                            <span class="skill-tag">Veeam</span>
+                            <span class="skill-tag">Bacula</span>
+                            <span class="skill-tag">rsync</span>
+                            <span class="skill-tag">robocopy</span>
+                            <span class="skill-tag">Hyper-V</span>
+                            <span class="skill-tag">VMware</span>
+                            <span class="skill-tag">Proxmox</span>
+                            <span class="skill-tag">OpenVPN</span>
+                            <span class="skill-tag">WireGuard</span>
+                            <span class="skill-tag">L2TP/IPsec</span>
+                            <span class="skill-tag">Zabbix</span>
+                            <span class="skill-tag">PRTG</span>
+                            <span class="skill-tag">Cisco</span>
+                            <span class="skill-tag">MikroTik</span>
+                            <span class="skill-tag">TP-Link</span>
+                            <span class="skill-tag">iptables</span>
+                            <span class="skill-tag">Windows Firewall</span>
+                            <span class="skill-tag">Kaspersky</span>
+                            <span class="skill-tag">Dr.Web</span>
+                            <span class="skill-tag">PowerShell</span>
+                            <span class="skill-tag">Bash</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Ansible</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="skill-category">
+                        <h3><i class="fas fa-file-contract"></i> Работа с СБИС</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag">СБИС Тензор</span>
+                            <span class="skill-tag">Установка и обновление</span>
+                            <span class="skill-tag">Интеграция</span>
+                            <span class="skill-tag">Электронный документооборот</span>
+                            <span class="skill-tag">ЭДО с ФНС</span>
+                            <span class="skill-tag">Маршруты согласования</span>
+                            <span class="skill-tag">Подписание ЭЦП</span>
+                            <span class="skill-tag">Интеграция СБИС → 1C</span>
+                            <span class="skill-tag">API СБИС</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3><i class="fas fa-code"></i> Разработка и доработка в 1C</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag">Создание справочников</span>
+                            <span class="skill-tag">Документы</span>
+                            <span class="skill-tag">Отчеты</span>
+                            <span class="skill-tag">Обработки</span>
+                            <span class="skill-tag">Запросы (Query)</span>
+                            <span class="skill-tag">Управляемые формы</span>
+                            <span class="skill-tag">Мобильные интерфейсы</span>
+                            <span class="skill-tag">Печатные формы</span>
+                            <span class="skill-tag">СКД</span>
+                            <span class="skill-tag">Табличный документ</span>
+                            <span class="skill-tag">Внешние обработки</span>
+                            <span class="skill-tag">Интеграции с веб-сервисами</span>
+                            <span class="skill-tag">Оптимизация производительности</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="container">
+            <div class="section-title">
+                <h2>Образование</h2>
+            </div>
+            
+            <div class="card">
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <span class="company">Поволжский государственный технологический университет, Йошкар-Ола</span>
+                        <span class="period">2021</span>
+                    </div>
+                    <div class="job-title">Магистр прикладной информатики</div>
+                    <div class="job-description">
+                        <p>Экономический факультет. Углубленное изучение современных информационных технологий, системного анализа и проектирования корпоративных информационных систем.</p>
+                    </div>
+                </div>
+
+                <div class="exp-item">
+                    <div class="exp-header">
+                        <span class="company">Поволжский государственный технологический университет, Йошкар-Ола</span>
+                        <span class="period">2019</span>
+                    </div>
+                    <div class="job-title">Бакалавр прикладной информатики</div>
+                    <div class="job-description">
+                        <p>Экономический факультет. Основы программирования, базы данных, веб-технологии, экономика и управление IT-проектами.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="languages">
+        <div class="container">
+            <div class="section-title">
+                <h2>Знание языков</h2>
+            </div>
+            
+            <div class="languages-container">
+                <div class="language-item">
+                    <div class="language-name">Таджикский</div>
+                    <div class="language-level">Родной</div>
+                </div>
+                <div class="language-item">
+                    <div class="language-name">Русский</div>
+                    <div class="language-level">С2 - В совершенстве</div>
+                </div>
+                <div class="language-item">
+                    <div class="language-name">Английский</div>
+                    <div class="language-level">А1 - Начальный</div>
+                </div>
+                <div class="language-item">
+                    <div class="language-name">Арабский</div>
+                    <div class="language-level">А2 - Элементарный</div>
+                </div>
+                <div class="language-item">
+                    <div class="language-name">Турецкий</div>
+                    <div class="language-level">В1 - Средний</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="additional">
+        <div class="container">
+            <div class="section-title">
+                <h2>Дополнительная информация</h2>
+            </div>
+            
+            <div class="card">
+                <div class="additional-info">
+                    <p><strong>Гражданство:</strong> Россия, Таджикистан</p>
+                    <p><strong>Разрешение на работу:</strong> Россия, Таджикистан</p>
+                    <p><strong>Водительские права:</strong> категория B, BE</p>
+                    <p><strong>Рекомендации:</strong> ООО "МКМ" - Андрей Новакович (Системный Администратор)</p>
+                    <p><strong>Хобби:</strong> чтение книг, монтаж видео, видеография, IT-технологии, путешествия</p>
+                    <p><strong>Личные качества:</strong> целеустремленность, амбициозность, коммуникабельность, стрессоустойчивость, быстрая обучаемость</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <h3>Связаться со мной</h3>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:+79613360606">+7 (961) 3360606</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:nurmuhammad_9797@bk.ru">nurmuhammad_9797@bk.ru</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Москва, Россия</span>
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <a href="https://promopack.ru/" target="_blank"><i class="fas fa-globe"></i></a>
+                    <a href="mailto:nurmuhammad_9797@bk.ru"><i class="fas fa-envelope"></i></a>
+                    <a href="tel:+79613360606"><i class="fas fa-phone"></i></a>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2025 Олтиев Нурмухаммад Хабибуллоевич | Senior 1C Developer & System Administrator</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="theme-switch">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <script>
+        // Анимации при скролле
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            cards.forEach(card => {
+                observer.observe(card);
+            });
+            
+            // Фиксированная навигация при скролле
+            const navContainer = document.querySelector('.nav-container');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    navContainer.classList.add('scrolled');
+                } else {
+                    navContainer.classList.remove('scrolled');
+                }
+            });
+            
+            // Переключение темы
+            const themeSwitch = document.querySelector('.theme-switch');
+            themeSwitch.addEventListener('click', () => {
+                document.body.classList.toggle('dark-theme');
+                
+                if (document.body.classList.contains('dark-theme')) {
+                    themeSwitch.innerHTML = '<i class="fas fa-sun"></i>';
+                    // Здесь можно добавить дополнительные стили для темной темы
+                    document.documentElement.style.setProperty('--light', '#1f2937');
+                    document.documentElement.style.setProperty('--dark', '#f9fafb');
+                } else {
+                    themeSwitch.innerHTML = '<i class="fas fa-moon"></i>';
+                    document.documentElement.style.setProperty('--light', '#f9fafb');
+                    document.documentElement.style.setProperty('--dark', '#1f2937');
+                }
+            });
+            
+            // Мобильное меню
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            });
+        });
+    </script>
+</body>
+</html>
